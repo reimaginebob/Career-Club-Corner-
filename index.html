@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Career Club Corner</title>
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/favicon.png" />
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FAA61A;
+    --orange-dark: #d98c0a;
+    --blue: #1865A6;
+    --blue-dark: #114f85;
+    --black: #000000;
+    --ink: #0a0a0a;
+    --ink-soft: #333333;
+    --paper: #f7f6f2;
+    --card: #ffffff;
+    --line: #e3e1da;
+    --muted: #6b6b6b;
+    --sidebar-w: 240px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: 'Montserrat', system-ui, sans-serif; line-height: 1.55; font-weight: 400; font-size: 16px; }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* App shell with sidebar */
+  .app { display: flex; min-height: 100vh; align-items: stretch; }
+  .sidebar { width: var(--sidebar-w); flex-shrink: 0; background: var(--black); color: #fff; padding: 28px 22px; position: sticky; top: 0; align-self: flex-start; height: 100vh; display: flex; flex-direction: column; }
+  .sidebar .brand { display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.4px; text-transform: uppercase; color: #fff; margin-bottom: 36px; }
+  .sidebar .brand .pip { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); }
+  .sidebar nav { display: flex; flex-direction: column; gap: 4px; }
+  .sidebar nav a { color: #d8dde6; font-size: 15px; font-weight: 500; padding: 11px 12px; border-radius: 8px; border-left: 3px solid transparent; transition: all 0.15s ease; }
+  .sidebar nav a:hover { color: var(--orange); background: rgba(255,255,255,0.04); text-decoration: none; border-left-color: var(--orange); }
+  .sidebar nav a.active { color: var(--orange); background: rgba(250,166,26,0.08); border-left-color: var(--orange); font-weight: 600; }
+  .sidebar .sidebar-foot { margin-top: auto; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 15px; color: #b8c0cc; }
+  .sidebar .sidebar-foot a { color: #fff; font-weight: 600; }
+  .sidebar .sidebar-foot a:hover { color: var(--orange); }
+  .sidebar .sidebar-foot p { margin: 10px 0 0; font-size: 15px; color: #8a8f99; }
+
+  /* Mobile top bar */
+  .mobilebar { display: none; background: var(--black); color: #fff; padding: 14px 20px; align-items: center; justify-content: space-between; }
+  .mobilebar .brand { display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; text-transform: uppercase; color: #fff; }
+  .mobilebar .brand .pip { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); }
+  .mobilebar .menu-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 14px; border-radius: 6px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .mobile-nav { display: none; }
+
+  /* Main content area — fills available width */
+  .main { flex: 1; min-width: 0; }
+  .main .wrap { max-width: 1480px; margin: 0; padding: 0 56px; }
+
+  /* Hero */
+  .hero { padding: 64px 0 44px; }
+  .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 46px; line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.4px; font-weight: 700; color: var(--blue); max-width: 1100px; }
+  .hero h1 .accent { color: var(--orange); }
+  .hero p.lead { font-size: 19px; color: var(--ink-soft); max-width: 880px; margin: 0 0 28px; font-weight: 400; }
+  .hero-cta { display: inline-block; background: var(--orange); color: var(--black); padding: 16px 28px; border-radius: 10px; font-weight: 700; font-size: 17px; text-decoration: none; box-shadow: 0 2px 6px rgba(250,166,26,0.30); transition: all 0.18s ease; }
+  .hero-cta:hover { background: var(--orange-dark); color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(250,166,26,0.42); }
+  .hero-cta-meta { display: inline-block; margin-left: 14px; color: var(--muted); font-size: 15px; font-weight: 500; }
+  .next-call { display: inline-flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px; font-size: 15px; color: var(--ink); box-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+  .next-call .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(250,166,26,0.22); }
+  .next-call strong { color: var(--ink); font-weight: 600; }
+  .next-call a { margin-left: 6px; font-weight: 600; }
+  .host-credit { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .host-credit .photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .host-credit .credit-text { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 260px; }
+  .host-credit .label { font-size: 15px; text-transform: uppercase; letter-spacing: 1.6px; font-weight: 700; color: var(--orange); }
+  .host-credit .name { font-weight: 700; color: var(--blue); font-size: 18px; }
+  .host-credit .creds { color: var(--ink-soft); font-size: 15px; line-height: 1.5; }
+  .host-credit .creds .sep { color: var(--muted); margin: 0 10px; }
+
+  /* Find what you need */
+  .helper { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 32px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .helper-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+  .help-card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 20px 22px; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; transition: all 0.15s ease; }
+  .help-card:hover { border-color: var(--orange); background: #fff; transform: translateY(-1px); text-decoration: none; box-shadow: 0 4px 8px rgba(0,0,0,0.04); }
+  .help-card .need { font-weight: 700; font-size: 16px; color: var(--blue); margin-bottom: 6px; }
+  .help-card .dest { font-size: 15px; color: var(--ink-soft); }
+  .help-card .arrow { margin-top: 12px; font-size: 15px; font-weight: 700; color: var(--orange-dark); }
+
+  /* Sections */
+  section { padding: 40px 0; border-top: 1px solid var(--line); }
+  section:first-of-type { border-top: none; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+  .section-head h2 { font-family: 'Montserrat', sans-serif; font-size: 30px; margin: 0; letter-spacing: -0.2px; font-weight: 700; color: var(--blue); }
+  .section-head .eyebrow { color: var(--orange); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; margin-bottom: 6px; }
+  .section-head .head-left { display: flex; flex-direction: column; }
+  .section-head a.more { font-size: 15px; color: var(--blue); font-weight: 600; }
+
+  /* This week panel */
+  .week-panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 32px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .week-panel .week-tag { display: inline-block; background: rgba(250,166,26,0.14); color: var(--orange-dark); font-weight: 700; font-size: 15px; letter-spacing: 1px; padding: 6px 14px; border-radius: 999px; text-transform: uppercase; }
+  .week-panel h3 { font-family: 'Montserrat', sans-serif; font-size: 26px; margin: 14px 0 8px; font-weight: 700; color: var(--blue); }
+  .week-panel .week-meta { color: var(--muted); font-size: 16px; margin-bottom: 16px; }
+  .week-panel .takeaways { color: var(--ink-soft); font-size: 16px; }
+  .week-panel .takeaways strong { color: var(--ink); font-weight: 600; }
+  .week-panel .takeaways ul { padding-left: 20px; margin: 10px 0 0; }
+  .week-panel .takeaways li { margin-bottom: 8px; }
+  .week-actions { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 22px; }
+  .week-actions h4 { font-size: 15px; text-transform: uppercase; letter-spacing: 1.4px; color: var(--blue); margin: 0 0 14px; font-weight: 700; }
+  .week-actions a.btn { display: block; width: 100%; text-align: center; padding: 13px 14px; border-radius: 8px; margin-bottom: 12px; font-weight: 600; font-size: 15px; }
+  .btn-primary { background: var(--orange); color: var(--black); }
+  .btn-primary:hover { background: var(--orange-dark); color: #fff; text-decoration: none; }
+  .btn-secondary { background: var(--blue); color: #fff; }
+  .btn-secondary:hover { background: var(--blue-dark); text-decoration: none; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { background: var(--card); text-decoration: none; }
+  .passcode { display: flex; justify-content: space-between; align-items: center; font-size: 15px; color: var(--muted); margin-top: 8px; padding: 10px 14px; background: #fff; border: 1px dashed var(--line); border-radius: 6px; }
+  .passcode code { font-family: 'Montserrat', monospace; color: var(--ink); font-weight: 700; }
+
+  /* Past weeks — 3 columns on wide screens */
+  .past-weeks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .week-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; }
+  .week-card .label { font-size: 15px; color: var(--orange-dark); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; }
+  .week-card h4 { font-family: 'Montserrat', sans-serif; font-size: 18px; margin: 8px 0 6px; font-weight: 700; color: var(--blue); }
+  .week-card .meta { color: var(--ink-soft); font-size: 15px; margin-bottom: 12px; }
+  .week-card .links { display: flex; gap: 16px; font-size: 15px; font-weight: 600; }
+  .week-card .links a { color: var(--blue); }
+
+  /* Resource grid */
+  .resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .resource { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 26px; display: flex; flex-direction: column; }
+  .resource .icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 16px; font-family: 'Montserrat', sans-serif; font-size: 18px; }
+  .icon-orange { background: var(--orange); color: var(--black); }
+  .icon-blue { background: var(--blue); color: #fff; }
+  .icon-black { background: var(--black); color: var(--orange); }
+  .resource h4 { font-family: 'Montserrat', sans-serif; font-size: 19px; margin: 0 0 8px; font-weight: 700; color: var(--blue); }
+  .resource p { color: var(--ink-soft); font-size: 15px; margin: 0 0 16px; flex-grow: 1; font-weight: 400; }
+  .resource a.go { font-size: 15px; font-weight: 700; color: var(--orange-dark); }
+  .resource a.go::after { content: " →"; }
+  .resource a.go:hover { color: var(--blue); text-decoration: none; }
+
+  /* Featured Reimagine tool */
+  .featured-tool { background: linear-gradient(135deg, var(--blue) 0%, #0e4f87 100%); color: #fff; border-radius: 16px; padding: 44px; margin-bottom: 28px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 36px; align-items: center; box-shadow: 0 6px 20px rgba(24,101,166,0.22); position: relative; overflow: hidden; }
+  .featured-tool::before { content: ""; position: absolute; top: -120px; right: -120px; width: 360px; height: 360px; border-radius: 50%; background: radial-gradient(circle, rgba(250,166,26,0.18) 0%, transparent 70%); pointer-events: none; }
+  .featured-tool .feat-body { position: relative; z-index: 1; }
+  .featured-tool .feat-eyebrow { color: var(--orange); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; margin-bottom: 12px; display: inline-block; }
+  .featured-tool h3 { font-family: 'Montserrat', sans-serif; font-size: 38px; font-weight: 700; margin: 0 0 16px; color: #fff; letter-spacing: -0.5px; display: flex; align-items: center; gap: 12px; }
+  .featured-tool h3 .pip { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+  .featured-tool p.feat-lead { font-size: 17px; line-height: 1.55; color: #e1ecf7; margin: 0 0 28px; max-width: 600px; }
+  .featured-tool .feat-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .featured-tool a.feat-btn { display: inline-block; padding: 14px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
+  .featured-tool a.feat-primary { background: var(--orange); color: var(--black); }
+  .featured-tool a.feat-primary:hover { background: #fff; color: var(--blue); text-decoration: none; }
+  .featured-tool a.feat-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+  .featured-tool a.feat-secondary:hover { background: rgba(255,255,255,0.22); text-decoration: none; }
+  .featured-tool .feat-features { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 26px; position: relative; z-index: 1; }
+  .featured-tool .feat-features h5 { font-size: 15px; text-transform: uppercase; letter-spacing: 1.4px; color: var(--orange); margin: 0 0 16px; font-weight: 700; }
+  .featured-tool .feat-features ul { list-style: none; padding: 0; margin: 0; }
+  .featured-tool .feat-features li { font-size: 15px; color: #fff; padding: 8px 0; display: flex; align-items: start; gap: 12px; line-height: 1.45; }
+  .featured-tool .feat-features li::before { content: "→"; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+  .tool-subhead { font-size: 15px; color: var(--ink-soft); font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; margin: 8px 0 16px; padding-top: 8px; }
+  .resource-grid.two-col { grid-template-columns: repeat(2, 1fr); }
+
+  /* Empty state */
+  .archive-empty { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 40px 32px; text-align: center; }
+  .archive-empty h4 { font-family: 'Montserrat'; font-size: 19px; color: var(--blue); margin: 0 0 10px; font-weight: 700; }
+  .archive-empty p { font-size: 16px; color: var(--ink-soft); margin: 0 auto; max-width: 640px; line-height: 1.55; }
+
+  /* Curriculum arc */
+  .arc-panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 32px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  .arc-status { margin-bottom: 26px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .arc-pos { background: var(--orange); color: var(--black); font-weight: 700; font-size: 15px; padding: 6px 14px; border-radius: 999px; text-transform: uppercase; letter-spacing: 1px; }
+  .arc-topic { font-size: 19px; font-weight: 700; color: var(--blue); }
+  .arc-bar { display: flex; gap: 6px; margin: 28px 0 36px; align-items: center; }
+  .arc-seg { flex: 1; height: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; position: relative; }
+  .arc-seg.done { background: var(--orange); border-color: var(--orange); }
+  .arc-seg.current { background: var(--orange); border-color: var(--orange); height: 14px; box-shadow: 0 0 0 5px rgba(250,166,26,0.22); }
+  .arc-seg.current::after { content: ""; position: absolute; top: -22px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 7px solid var(--orange); }
+  .arc-list { display: flex; flex-direction: column; gap: 4px; }
+  .arc-item { display: grid; grid-template-columns: 28px 130px 1fr auto; gap: 18px; padding: 12px 16px; border-radius: 8px; align-items: center; font-size: 15px; }
+  .arc-item.done { color: var(--muted); }
+  .arc-item.done .arc-mark { color: var(--orange); }
+  .arc-item.current { background: rgba(250,166,26,0.08); border: 1px solid var(--orange); color: var(--ink); font-weight: 600; }
+  .arc-item.current .arc-mark { color: var(--orange); font-size: 18px; }
+  .arc-item.current .arc-weeks, .arc-item.current .arc-title { color: var(--blue); }
+  .arc-item.upcoming { color: var(--ink-soft); }
+  .arc-item.upcoming .arc-mark { color: var(--line); }
+  .arc-mark { font-weight: 700; text-align: center; font-size: 16px; }
+  .arc-weeks { font-weight: 700; font-size: 15px; color: var(--orange-dark); }
+  .arc-item.done .arc-weeks { color: var(--muted); }
+  .arc-item.upcoming .arc-weeks { color: var(--ink-soft); }
+  .arc-title { font-size: 15px; }
+  .arc-now { font-size: 15px; color: var(--orange-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+  .arc-next { margin-top: 24px; padding: 16px 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .arc-next-label { font-size: 15px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1.2px; }
+  .arc-next-title { font-size: 16px; color: var(--ink); }
+
+  /* Footer */
+  footer { background: var(--black); color: #d8dde6; padding: 48px 0; margin-top: 48px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
+  footer h5 { font-family: 'Montserrat', sans-serif; color: var(--orange); font-size: 15px; margin: 0 0 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; }
+  footer p { font-size: 15px; margin: 6px 0; }
+  footer a { color: #fff; }
+  footer a:hover { color: var(--orange); }
+  .footer-brand { max-width: 400px; }
+  .footer-brand p { color: #b8c0cc; }
+
+  /* Tablet — narrower than 1180 drops past-weeks to 2 columns */
+  @media (max-width: 1180px) {
+    .past-weeks { grid-template-columns: repeat(2, 1fr); }
+    .main .wrap { padding: 0 40px; }
+    .arc-item { grid-template-columns: 28px 110px 1fr; }
+    .arc-item .arc-now { display: none; }
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .app { flex-direction: column; }
+    .sidebar { display: none; }
+    .mobilebar { display: flex; }
+    .mobilebar.open + nav.mobile-nav { display: flex; }
+    .mobile-nav { display: none; flex-direction: column; background: var(--black); padding: 8px 16px 16px; }
+    .mobile-nav a { color: #d8dde6; font-size: 16px; font-weight: 500; padding: 14px 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .main .wrap { padding: 0 22px; }
+    .hero { padding: 40px 0 32px; }
+    .hero h1 { font-size: 30px; }
+    .hero p.lead { font-size: 17px; }
+    .week-panel { grid-template-columns: 1fr; padding: 24px; gap: 24px; }
+    .past-weeks { grid-template-columns: 1fr; }
+    .resource-grid { grid-template-columns: 1fr; }
+    .helper { padding: 24px; }
+    .helper-grid { grid-template-columns: 1fr; }
+    .section-head h2 { font-size: 24px; }
+    .arc-panel { padding: 24px; }
+    .arc-item { grid-template-columns: 28px 1fr; gap: 10px 14px; align-items: start; }
+    .arc-item > .arc-weeks { grid-column: 2; grid-row: 1; }
+    .arc-item > .arc-title { grid-column: 2; grid-row: 2; }
+    .arc-item > .arc-now { display: none; }
+    .featured-tool { grid-template-columns: 1fr; padding: 30px; gap: 28px; }
+    .featured-tool h3 { font-size: 30px; }
+    .resource-grid.two-col { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand"><span class="pip"></span>Career Club Corner</div>
+  <nav id="sideNav">
+    <a href="#find" class="active">Find what you need</a>
+    <a href="#this-week">This Week</a>
+    <a href="#arc">Curriculum</a>
+    <a href="#archive">Archive</a>
+    <a href="#tools">Tools</a>
+    <a href="#connect">Connect</a>
+    <a href="#deeper">Going Deeper</a>
+  </nav>
+  <div class="sidebar-foot">
+    <a href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="sidebar">Register for Monday →</a>
+    <p>career.club</p>
+  </div>
+</aside>
+
+<div class="main">
+
+<div class="mobilebar" id="mobileBar">
+  <div class="brand"><span class="pip"></span>Career Club Corner</div>
+  <button class="menu-btn" onclick="document.getElementById('mobileBar').classList.toggle('open')">Menu</button>
+</div>
+<nav class="mobile-nav">
+  <a href="#find">Find what you need</a>
+  <a href="#this-week">This Week</a>
+  <a href="#arc">Curriculum</a>
+  <a href="#archive">Archive</a>
+  <a href="#tools">Tools</a>
+  <a href="#connect">Connect</a>
+  <a href="#deeper">Going Deeper</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Job search is a team sport. <span class="accent">This is your team.</span></h1>
+    <p class="lead">Join Bob Goodwin, a LinkedIn Top Voice, and dozens of fellow job seekers as we bring order to the chaos, build community with one another, and find encouragement. Bob teaches from his book, <em>Making Your Own Weather</em>, a five-step process that will renew your job search. It's <strong>FREE</strong> and we would love to have you join this coming Monday at 12:00 ET.</p>
+    <a class="hero-cta" href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="hero">Register for Monday at 12pm ET →</a>
+    <span class="hero-cta-meta">Free. Every session recorded.</span>
+    <div class="host-credit">
+      <img class="photo" src="/bob-headshot.png" alt="Bob Goodwin" />
+      <div class="credit-text">
+        <span class="label">Hosted by</span>
+        <span class="name">Bob Goodwin</span>
+        <span class="creds">LinkedIn Top Voice<span class="sep">·</span>Author of <em>Making Your Own Weather</em><span class="sep">·</span>Frequent speaker and contributor to SHRM, the world's largest HR association</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="find">
+  <div class="wrap">
+    <div class="helper">
+      <div class="section-head" style="margin-bottom:0;">
+        <div class="head-left">
+          <span class="eyebrow">Quick Help</span>
+          <h2>Find what you need</h2>
+        </div>
+      </div>
+      <div class="helper-grid">
+        <a class="help-card" href="#this-week" data-event="quick_help" data-event-loc="this_week">
+          <span class="need">Get this week's deck and recording</span>
+          <span class="dest">Latest session materials, Zoom recording, and passcode.</span>
+          <span class="arrow">Go to This Week →</span>
+        </a>
+        <a class="help-card" href="#archive" data-event="quick_help" data-event-loc="archive">
+          <span class="need">Catch up on a session I missed</span>
+          <span class="dest">Recordings and decks from recent weeks, plus the full archive.</span>
+          <span class="arrow">Go to Archive →</span>
+        </a>
+        <a class="help-card" href="#tools" data-event="quick_help" data-event-loc="reimagine">
+          <span class="need">Open Reimagine and work between sessions</span>
+          <span class="dest">The activation tool that turns each week's teaching into work you run on your own.</span>
+          <span class="arrow">Go to Reimagine →</span>
+        </a>
+        <a class="help-card" href="#connect" data-event="quick_help" data-event-loc="networking">
+          <span class="need">Connect with someone in the group</span>
+          <span class="dest">The networking sheet, where attendees share their search focus.</span>
+          <span class="arrow">Go to Connect →</span>
+        </a>
+        <a class="help-card" href="#connect" data-event="quick_help" data-event-loc="invite">
+          <span class="need">Invite a friend to join</span>
+          <span class="dest">The Zoom registration link, shareable in one click.</span>
+          <span class="arrow">Go to Connect →</span>
+        </a>
+        <a class="help-card" href="https://buy.stripe.com/4gw01X6SZcHq3u07sw" data-event="consultation_book" data-event-loc="quick_help">
+          <span class="need">Book 1:1 time with Bob</span>
+          <span class="dest">Paid consultation, scheduled directly through Stripe.</span>
+          <span class="arrow">Book a session →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="this-week">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="head-left">
+        <span class="eyebrow">This Week</span>
+        <h2>Latest session</h2>
+      </div>
+    </div>
+    <div class="week-panel">
+      <div>
+        <span class="week-tag">Week 1 of 14 · June 1, 2026</span>
+        <h3>KEEL and finding meaning in uncertainty</h3>
+        <p class="week-meta">Know you'll find another job. Emotional ups and downs are natural. Expect the best from yourself and others. Let the past go.</p>
+        <div class="takeaways">
+          <strong>Highlights from the conversation:</strong>
+          <ul>
+            <li>The Making Your Own Weather framework has five components: attitude, personal brand, networking, interviewing, and negotiation. KEEL is the posture that holds them together.</li>
+            <li>An even KEEL is a posture you can choose at any moment, regardless of how the day feels.</li>
+            <li>Evidence-based self-belief comes from reviewing what you have already done well. Past emails, performance reviews, and recommendations are the receipts.</li>
+            <li>Build your own "unemployment benefits" list: the time, the new connections, the learning. Naming what you gain in the period keeps perspective grounded.</li>
+            <li>Keep a pipeline of opportunities. Even when one role feels likely, keep the others moving.</li>
+            <li>Reimagine is the companion tool. Start by adding your assessment results and past achievements so the brand work builds on what is already true.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week-actions">
+        <h4>Get the materials</h4>
+        <a class="btn btn-primary" href="https://us06web.zoom.us/rec/share/zTmQUi_J9Iq0fOGKlMIMUiHOJhK48bNhAS0CgenCKOFiyZNsjOCh9H-phI7YpJSc.Dd0Igo3LhUeGZGQz" data-event="recording_play">Watch the recording</a>
+        <div class="passcode"><span>Passcode</span><code>aLjMM4E$</code></div>
+        <a class="btn btn-secondary" href="https://drive.google.com/file/d/1V7B9Wc762UxrEvzuYtILwGpgrlxYZZ-g/view?usp=drivesdk" style="margin-top:12px;" data-event="deck_open">Open the deck</a>
+        <a class="btn btn-ghost" href="https://docs.google.com/spreadsheets/d/1cIvcHC7DaSvP3RfgETh183-j5IOqKtJGiofDKCuEGLw/edit?usp=sharing" data-event="archive_open" data-event-loc="this_week">Full session archive</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="arc">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="head-left">
+        <span class="eyebrow">Curriculum</span>
+        <h2>Where we are in the 14-week arc</h2>
+      </div>
+    </div>
+    <div class="arc-panel">
+      <div class="arc-status">
+        <span class="arc-pos">Week 1 of 14</span>
+        <span class="arc-topic">KEEL and finding meaning in uncertainty</span>
+      </div>
+      <div class="arc-bar">
+        <div class="arc-seg current" title="Week 1"></div>
+        <div class="arc-seg" title="Week 2"></div>
+        <div class="arc-seg" title="Week 3"></div>
+        <div class="arc-seg" title="Week 4"></div>
+        <div class="arc-seg" title="Week 5"></div>
+        <div class="arc-seg" title="Week 6"></div>
+        <div class="arc-seg" title="Week 7"></div>
+        <div class="arc-seg" title="Week 8"></div>
+        <div class="arc-seg" title="Week 9"></div>
+        <div class="arc-seg" title="Week 10"></div>
+        <div class="arc-seg" title="Week 11"></div>
+        <div class="arc-seg" title="Week 12"></div>
+        <div class="arc-seg" title="Week 13"></div>
+        <div class="arc-seg" title="Week 14"></div>
+      </div>
+      <div class="arc-list">
+        <div class="arc-item current">
+          <span class="arc-mark">●</span>
+          <span class="arc-weeks">Weeks 1-2</span>
+          <span class="arc-title">KEEL and finding meaning in uncertainty</span>
+          <span class="arc-now">We are here</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 3</span>
+          <span class="arc-title">The Four Cs of personal brand</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 4</span>
+          <span class="arc-title">Two Doors and Three Lanes: the strategic choice</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 5</span>
+          <span class="arc-title">TMAY (Tell Me About Yourself) and your unique value proposition</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 6</span>
+          <span class="arc-title">Resume and LinkedIn</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Weeks 7-8</span>
+          <span class="arc-title">Networking and direct outreach</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Weeks 9-11</span>
+          <span class="arc-title">STAR stories, the Five Ps, and remixing</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 12</span>
+          <span class="arc-title">Negotiating</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 13</span>
+          <span class="arc-title">Targeting specific opportunities</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 14</span>
+          <span class="arc-title">Putting it all together</span>
+        </div>
+      </div>
+      <div class="arc-next">
+        <span class="arc-next-label">Next Monday</span>
+        <span class="arc-next-title">Week 2 of 14: KEEL, part 2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="archive">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="head-left">
+        <span class="eyebrow">Past Weeks</span>
+        <h2>Recent sessions</h2>
+      </div>
+      <a class="more" href="https://docs.google.com/spreadsheets/d/1cIvcHC7DaSvP3RfgETh183-j5IOqKtJGiofDKCuEGLw/edit?usp=sharing">See all sessions →</a>
+    </div>
+    <div class="archive-empty">
+      <h4>The archive will populate as the curriculum runs</h4>
+      <p>Week 1 (June 1, 2026) is the first session of this run, and its materials are in the This Week panel above. Recordings and decks from prior weeks will appear here as we move through the 14-week arc.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="head-left">
+        <span class="eyebrow">The Activation Tool</span>
+        <h2>Reimagine turns the curriculum into work you can do</h2>
+      </div>
+    </div>
+
+    <div class="featured-tool">
+      <div class="feat-body">
+        <span class="feat-eyebrow">Reimagine · Companion to the curriculum</span>
+        <h3><span class="pip"></span>Reimagine</h3>
+        <p class="feat-lead">Built on the Making Your Own Weather framework, Reimagine takes each week's teaching and turns it into work you run in your actual search. The curriculum and the tool move together. What you learn on Monday becomes what you do in Reimagine before the next call.</p>
+        <div class="feat-actions">
+          <a class="feat-btn feat-primary" href="https://reimagine.career.club" data-event="reimagine_open" data-event-loc="featured">Open Reimagine →</a>
+          <a class="feat-btn feat-secondary" href="https://reimagine.career.club/reimagine-user-guide.pdf" data-event="user_guide_open" data-event-loc="featured">Read the user guide</a>
+        </div>
+      </div>
+      <div class="feat-features">
+        <h5>What you get inside</h5>
+        <ul>
+          <li>Three career lanes: upgrade, ecosystem pivot, reinvention</li>
+          <li>Live target company research</li>
+          <li>Resume and LinkedIn refresh aligned to your direction</li>
+          <li>Personalized outreach drafts to real people</li>
+          <li>Devil's advocate prep for interviews</li>
+          <li>Income Now module for parallel income</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tool-subhead">Inputs that feed Reimagine</div>
+
+    <div class="resource-grid two-col">
+      <div class="resource">
+        <div class="icon icon-orange">A</div>
+        <h4>Affintus Assessment</h4>
+        <p>Free assessment built for job seekers. Surfaces your natural wiring so the brand work in Reimagine builds on what is already true about you.</p>
+        <a class="go" href="https://affintus.com/job-seekers/" data-event="affintus_click">Take the assessment</a>
+      </div>
+      <div class="resource">
+        <div class="icon icon-black">S</div>
+        <h4>SCOPE Framework</h4>
+        <p>Worksheet for sizing a specific opportunity. Bring the output into Reimagine when you are targeting a role.</p>
+        <a class="go" href="https://docs.google.com/spreadsheets/d/1BVLrpj2CvEJePvGJYF7U3gsx1pa0L9ejqx7smn9WcN4/edit?usp=sharing" data-event="scope_click">Open the workbook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="head-left">
+        <span class="eyebrow">Connect</span>
+        <h2>Put community to work</h2>
+      </div>
+    </div>
+    <div class="resource-grid">
+      <div class="resource">
+        <div class="icon icon-orange">N</div>
+        <h4>Networking Sheet</h4>
+        <p>Add your name, your search focus, and how others can help. Find people in adjacent roles, industries, or cities.</p>
+        <a class="go" href="https://docs.google.com/spreadsheets/d/1AKkKfMTT60cv-LczgMa1HJWiW9CD8Tu4/edit?usp=sharing&ouid=107263181348962073758&rtpof=true&sd=true" data-event="networking_open">Open the sheet</a>
+      </div>
+      <div class="resource">
+        <div class="icon icon-blue">+</div>
+        <h4>Invite a Friend</h4>
+        <p>Know someone who would benefit from the Monday call? Share the registration link.</p>
+        <a class="go" href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="invite_open">Get the invite link</a>
+      </div>
+      <div class="resource">
+        <div class="icon icon-black">1</div>
+        <h4>Book a 1:1</h4>
+        <p>Want time with Bob to work through your specific situation? Book a paid consultation.</p>
+        <a class="go" href="https://buy.stripe.com/4gw01X6SZcHq3u07sw" data-event="consultation_book" data-event-loc="connect">Book a session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="deeper">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="head-left">
+        <span class="eyebrow">Going Deeper</span>
+        <h2>Beyond the Monday call</h2>
+      </div>
+    </div>
+    <div class="resource-grid">
+      <div class="resource">
+        <div class="icon icon-orange">M</div>
+        <h4>Making Your Own Weather</h4>
+        <p>The book. A complete job search system from mindset through negotiation. Eleven lessons, drawn from twenty years of coaching.</p>
+        <a class="go" href="https://a.co/d/0g3XnyFv" data-event="book_buy">Get the book</a>
+      </div>
+      <div class="resource">
+        <div class="icon icon-blue">U</div>
+        <h4>Reimagine User Guide</h4>
+        <p>How to get the most out of Reimagine, step by step. Especially helpful for the go-to-market and outreach phases.</p>
+        <a class="go" href="https://reimagine.career.club/reimagine-user-guide.pdf" data-event="user_guide_open" data-event-loc="deeper"
