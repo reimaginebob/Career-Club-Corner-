@@ -369,7 +369,6 @@
         <a class="btn btn-primary" href="https://us06web.zoom.us/rec/share/zTmQUi_J9Iq0fOGKlMIMUiHOJhK48bNhAS0CgenCKOFiyZNsjOCh9H-phI7YpJSc.Dd0Igo3LhUeGZGQz" data-event="recording_play">Watch the recording</a>
         <div class="passcode"><span>Passcode</span><code>aLjMM4E$</code></div>
         <a class="btn btn-secondary" href="https://drive.google.com/file/d/1V7B9Wc762UxrEvzuYtILwGpgrlxYZZ-g/view?usp=drivesdk" style="margin-top:12px;" data-event="deck_open">Open the deck</a>
-        <a class="btn btn-ghost" href="https://docs.google.com/spreadsheets/d/1cIvcHC7DaSvP3RfgETh183-j5IOqKtJGiofDKCuEGLw/edit?usp=sharing" data-event="archive_open" data-event-loc="this_week">Full session archive</a>
       </div>
     </div>
   </div>
@@ -472,7 +471,6 @@
         <span class="eyebrow">Past Weeks</span>
         <h2>Recent sessions</h2>
       </div>
-      <a class="more" href="https://docs.google.com/spreadsheets/d/1cIvcHC7DaSvP3RfgETh183-j5IOqKtJGiofDKCuEGLw/edit?usp=sharing">See all sessions →</a>
     </div>
     <div class="archive-empty">
       <h4>The archive will populate as the curriculum runs</h4>
@@ -588,59 +586,4 @@
         <div class="icon icon-black">P</div>
         <h4>Career Club Live Podcast</h4>
         <p>Candid conversations with C-suite leaders on career, leadership, and reinvention. New episodes regularly.</p>
-        <a class="go" href="https://podcasts.apple.com/us/podcast/career-club-live-with-bob-goodwin/id1609808305" data-event="podcast_listen">Listen on Apple</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-brand">
-      <h5>Career Club Corner</h5>
-      <p>A free weekly coaching call for professionals in transition. Hosted by Bob Goodwin, founder of Career Club.</p>
-    </div>
-    <div>
-      <h5>Contact</h5>
-      <p><a href="mailto:bob@career.club">bob@career.club</a></p>
-      <p><a href="https://career.club">career.club</a></p>
-      <p><a href="https://www.linkedin.com/in/bobgoodwincareerclub">LinkedIn</a></p>
-      <p><a href="mailto:bob@career.club?subject=Career%20Club%20Corner%20dashboard%20feedback" data-event="feedback_click">Send feedback on this page</a></p>
-    </div>
-    <div>
-      <h5>Join the call</h5>
-      <p><a href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="footer">Register for Monday</a></p>
-      <p><a href="https://docs.google.com/spreadsheets/d/1cIvcHC7DaSvP3RfgETh183-j5IOqKtJGiofDKCuEGLw/edit?usp=sharing" data-event="archive_open" data-event-loc="footer">All session materials</a></p>
-    </div>
-  </div>
-</footer>
-
-</div><!-- /.main -->
-</div><!-- /.app -->
-
-<script>
-  // Sidebar active section tracking
-  const links = document.querySelectorAll('#sideNav a');
-  const sections = Array.from(document.querySelectorAll('section[id]'));
-  const setActive = (id) => {
-    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-  };
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) setActive(e.target.id);
-    });
-  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-  sections.forEach(s => obs.observe(s));
-
-  // Click event tracking — fires a Vercel Analytics custom event for any element with data-event
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-event]');
-    if (!el || !window.va) return;
-    var name = el.getAttribute('data-event');
-    var loc = el.getAttribute('data-event-loc') || 'default';
-    window.va('event', { name: name, location: loc });
-  });
-</script>
-
-</body>
-</html>
+        <a class="go" href="https://podcasts.apple.com/us/podcast/career-club-live-with-bob-goodwin/id16
