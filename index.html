@@ -350,18 +350,26 @@
     <div class="week-panel">
       <div>
         <span class="week-tag">Week 2 of 14 · June 8, 2026</span>
-        <h3>KEEL and Finding Meaning in Uncertainty</h3>
+        <h3>Finding Meaning in Uncertainty</h3>
         <p class="week-meta">When you cannot change the situation, you can still choose your response. This week was about finding meaning, and building resilience, in the uncertain middle of a search.</p>
         <div class="takeaways">
           <strong>Highlights from the conversation:</strong>
           <ul>
             <li>You cannot always change the situation, so you change how you meet it. Leaning on Viktor Frankl's Man's Search for Meaning, we sat with the one thing no circumstance can take from you: your attitude and your next action. The market is outside your control. How you show up to it is not.</li>
-            <li>Resilience and recovery are different things. Recovery returns you to where you were. Resilience builds something stronger out of the strain, the way lifting weights breaks muscle down so it grows back tougher. This season can leave you more capable than it found you.</li>
-            <li>Put your energy where your control is. We borrowed Stephen Covey's split between the things you worry about and the things you can affect. Worry drains the tank. Small action fills it back up.</li>
+            <li>Resilience and recovery are different things. Recovery returns you to where you were. Resilience builds something stronger out of the strain, the way lifting weights breaks muscle down so it grows back stronger. This season can leave you more capable than it found you.</li>
+            <li>Put your energy where your control is. We borrowed Stephen Covey's split between the things you worry about and the things you can affect. Worry drains the tank. Small actions fill it back up.</li>
             <li>Meaning comes through three doors: what you create, what you experience, and the attitude you choose. That can look like helping one person this week, building or fixing something with your hands, taking a walk and noticing five things worth noticing, or picking one word for who you want to be right now.</li>
             <li>Helping someone else tends to help you too. Several of you shared how volunteering, mentoring, or organizing something for others gave the week purpose, and more than once it opened a door you did not see coming. You reap what you sow.</li>
-            <li>Your energy walks into the interview before you do. A few of you pointed out how attitude shapes the room. Showing up as the best and truest version of yourself is part of the brand work.</li>
-            <li>Begin with the Orientation module in Reimagine. Upload your resume, your LinkedIn, your assessment, and the pieces of your story. It is built to surface the values and throughlines a resume alone will never show.</li>
+            <li>Your energy walks into the interview with you. A few of you pointed out how attitude shapes the room. Showing up as the best and truest version of yourself is part of the brand work.</li>
+          </ul>
+        </div>
+        <div class="takeaways" style="margin-top:24px;">
+          <strong>Your work this week:</strong>
+          <ul>
+            <li><strong>Work the Orientation module in Reimagine.</strong> Upload your resume, your LinkedIn, your assessment, and the pieces of your story, then read your initial profile and bring a few reactions next Monday.</li>
+            <li><strong>Reach out to one person in the group.</strong> Use the networking sheet to find someone in an adjacent role, industry, or city, and start a conversation.</li>
+            <li><strong>Help someone this week.</strong> Volunteer, mentor, or lend a hand somewhere it is needed. It builds skills and confidence, and it has a way of coming back around.</li>
+            <li><strong>Bring a job description to Reimagine.</strong> Upload one and let it generate tailored interview prep and a read on how well you fit.</li>
           </ul>
         </div>
       </div>
@@ -386,7 +394,7 @@
     <div class="arc-panel">
       <div class="arc-status">
         <span class="arc-pos">Week 2 of 14</span>
-        <span class="arc-topic">KEEL and Finding Meaning in Uncertainty</span>
+        <span class="arc-topic">Finding Meaning in Uncertainty</span>
       </div>
       <div class="arc-bar">
         <div class="arc-seg done" title="Week 1"></div>
@@ -405,10 +413,15 @@
         <div class="arc-seg" title="Week 14"></div>
       </div>
       <div class="arc-list">
+        <div class="arc-item done">
+          <span class="arc-mark">●</span>
+          <span class="arc-weeks">Week 1</span>
+          <span class="arc-title">Keep an Even KEEL</span>
+        </div>
         <div class="arc-item current">
           <span class="arc-mark">●</span>
-          <span class="arc-weeks">Weeks 1-2</span>
-          <span class="arc-title">KEEL and Finding Meaning in Uncertainty</span>
+          <span class="arc-weeks">Week 2</span>
+          <span class="arc-title">Finding Meaning in Uncertainty</span>
           <span class="arc-now">We are here</span>
         </div>
         <div class="arc-item upcoming">
@@ -476,7 +489,7 @@
     <div class="past-weeks">
       <div class="week-card">
         <span class="label">Current run, Week 1</span>
-        <h4>KEEL and Finding Meaning in Uncertainty</h4>
+        <h4>Keep an Even KEEL</h4>
         <p class="meta">June 1, 2026 · Recording passcode: aLjMM4E$</p>
         <div class="links">
           <a href="https://us06web.zoom.us/rec/share/zTmQUi_J9Iq0fOGKlMIMUiHOJhK48bNhAS0CgenCKOFiyZNsjOCh9H-phI7YpJSc.Dd0Igo3LhUeGZGQz" target="_blank" rel="noopener noreferrer">Recording</a>
@@ -624,27 +637,4 @@
 
 <script>
   // Sidebar active section tracking
-  const links = document.querySelectorAll('#sideNav a');
-  const sections = Array.from(document.querySelectorAll('section[id]'));
-  const setActive = (id) => {
-    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-  };
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) setActive(e.target.id);
-    });
-  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-  sections.forEach(s => obs.observe(s));
-
-  // Click event tracking
-  document.addEventListener('click', function(e) {
-    var el = e.target.closest('[data-event]');
-    if (!el || !window.va) return;
-    var name = el.getAttribute('data-event');
-    var loc = el.getAttribute('data-event-loc') || 'default';
-    window.va('event', { name: name, location: loc });
-  });
-</script>
-
-</body>
-</html>
+  const links = d
