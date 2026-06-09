@@ -200,7 +200,8 @@
   .arc-recap-toggle { font-size: 13px; font-weight: 700; color: var(--orange-dark); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
   .arc-chev { display: inline-block; transition: transform 0.15s ease; }
   .arc-item.open .arc-chev { transform: rotate(180deg); }
-  .arc-recap { margin: 0 0 8px 46px; }
+  .arc-recap { margin: 0 0 8px 46px; display: none; }
+  .arc-recap.show { display: block; }
   .arc-recap-inner { background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--orange); border-radius: 8px; padding: 16px 18px; }
   .arc-recap-summary { margin: 0 0 12px; font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
   .arc-recap-links { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; font-size: 15px; }
@@ -268,7 +269,6 @@
     <a href="#find" class="active">Find what you need</a>
     <a href="#this-week">This Week</a>
     <a href="#arc">Curriculum</a>
-    <a href="#archive">Archive</a>
     <a href="#tools">Tools</a>
     <a href="#connect">Connect</a>
     <a href="#deeper">Going Deeper</a>
@@ -289,7 +289,6 @@
   <a href="#find">Find what you need</a>
   <a href="#this-week">This Week</a>
   <a href="#arc">Curriculum</a>
-  <a href="#archive">Archive</a>
   <a href="#tools">Tools</a>
   <a href="#connect">Connect</a>
   <a href="#deeper">Going Deeper</a>
@@ -327,10 +326,10 @@
           <span class="dest">Latest session materials, Zoom recording, and passcode.</span>
           <span class="arrow">Go to This Week →</span>
         </a>
-        <a class="help-card" href="#archive" data-event="quick_help" data-event-loc="archive">
+        <a class="help-card" href="#arc" data-event="quick_help" data-event-loc="curriculum">
           <span class="need">Catch up on a session I missed</span>
-          <span class="dest">Recordings and decks from recent weeks, plus the full archive.</span>
-          <span class="arrow">Go to Archive →</span>
+          <span class="dest">Open any completed week in the curriculum for its recap, recording, and deck.</span>
+          <span class="arrow">Go to Curriculum →</span>
         </a>
         <a class="help-card" href="#tools" data-event="quick_help" data-event-loc="reimagine">
           <span class="need">Open Reimagine and work between sessions</span>
@@ -432,13 +431,13 @@
       </div>
       <div class="arc-list">
         <div class="arc-phase"><span class="arc-phase-num">1</span><span class="arc-phase-name">Attitude</span></div>
-        <div class="arc-item done arc-clickable" id="recap-wk1-row" onclick="toggleRecap('recap-wk1')">
+        <div class="arc-item done arc-clickable" data-recap="recap-wk1">
           <span class="arc-mark">●</span>
           <span class="arc-weeks">Week 1</span>
           <span class="arc-title">Keep an Even KEEL</span>
           <span class="arc-recap-toggle">Recap <span class="arc-chev">▾</span></span>
         </div>
-        <div class="arc-recap" id="recap-wk1" hidden>
+        <div class="arc-recap" id="recap-wk1">
           <div class="arc-recap-inner">
             <p class="arc-recap-summary">Staying on an even keel through the search: know you'll land, expect the emotional ups and downs, expect the best of yourself and others, and let go of past resentment. You are not a victim of your circumstances; each day you still choose your attitude and your actions.</p>
             <div class="arc-recap-links">
@@ -533,28 +532,6 @@
   </div>
 </section>
 
-<section id="archive">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="head-left">
-        <span class="eyebrow">Past Weeks</span>
-        <h2>Recent sessions</h2>
-      </div>
-    </div>
-    <div class="past-weeks">
-      <div class="week-card">
-        <span class="label">Current run, Week 1</span>
-        <h4>Keep an Even KEEL</h4>
-        <p class="meta">June 1, 2026 · Recording passcode: aLjMM4E$</p>
-        <div class="links">
-          <a href="https://us06web.zoom.us/rec/share/zTmQUi_J9Iq0fOGKlMIMUiHOJhK48bNhAS0CgenCKOFiyZNsjOCh9H-phI7YpJSc.Dd0Igo3LhUeGZGQz" target="_blank" rel="noopener noreferrer">Recording</a>
-          <a href="https://drive.google.com/file/d/1V7B9Wc762UxrEvzuYtILwGpgrlxYZZ-g/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Deck</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="tools">
   <div class="wrap">
     <div class="section-head">
@@ -600,4 +577,23 @@
         <div class="icon icon-black">S</div>
         <h4>SCOPE Framework</h4>
         <p>Worksheet for sizing a specific opportunity. Bring the output into Reimagine when you are targeting a role.</p>
-        <a class="go" href="https://docs.google.com/spreadsheets/d/1BVLrpj2CvEJePvGJYF7U3gs
+        <a class="go" href="https://docs.google.com/spreadsheets/d/1BVLrpj2CvEJePvGJYF7U3gsx1pa0L9ejqx7smn9WcN4/edit?usp=sharing" data-event="scope_click" target="_blank" rel="noopener noreferrer">Open the workbook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="connect">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="head-left">
+        <span class="eyebrow">Connect</span>
+        <h2>Put community to work</h2>
+      </div>
+    </div>
+    <div class="resource-grid">
+      <div class="resource">
+        <div class="icon icon-orange">N</div>
+        <h4>Networking Sheet</h4>
+        <p>Add your name, your search focus, and how others can help. Find people in adjacent roles, industries, or cities.</p>
+        <a class="go" href="https://docs.google.com/spreadsheets/d/1AKkKfMTT60cv-LczgMa1HJWiW9CD8Tu4/edit?usp=sharing&ouid=107263181348962073758&rtpof=true&sd=true" data-event="networking_open" target="_blank" rel="noopener noreferrer">Open the she
