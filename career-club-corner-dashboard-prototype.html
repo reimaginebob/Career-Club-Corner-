@@ -137,6 +137,10 @@
   .resource a.go { font-size: 15px; font-weight: 700; color: var(--orange-dark); }
   .resource a.go::after { content: " →"; }
   .resource a.go:hover { color: var(--blue); text-decoration: none; }
+  .resource .card-logo { height: 30px; width: auto; display: block; margin-bottom: 16px; }
+  .resource .card-cover { height: 64px; width: auto; display: block; margin-bottom: 16px; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.18); }
+  .resource .card-mark { width: 44px; height: 44px; display: block; margin-bottom: 16px; }
+  .featured-tool h3 .feat-mark { width: 30px; height: 30px; flex-shrink: 0; }
 
   /* Featured Reimagine tool */
   .featured-tool { background: linear-gradient(135deg, var(--blue) 0%, #0e4f87 100%); color: #fff; border-radius: 16px; padding: 44px; margin-bottom: 28px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 36px; align-items: center; box-shadow: 0 6px 20px rgba(24,101,166,0.22); position: relative; overflow: hidden; }
@@ -545,7 +549,7 @@
     <div class="featured-tool">
       <div class="feat-body">
         <span class="feat-eyebrow">Reimagine · Companion to the curriculum</span>
-        <h3><span class="pip"></span>Reimagine</h3>
+        <h3><img class="feat-mark" src="https://reimagine.career.club/favicon.svg" alt="Reimagine" />Reimagine</h3>
         <p class="feat-lead">Built on the Making Your Own Weather framework, Reimagine takes each week's teaching and turns it into work you run in your actual search. The curriculum and the tool move together. What you learn on Monday becomes what you do in Reimagine before the next call.</p>
         <div class="feat-actions">
           <a class="feat-btn feat-primary" href="https://reimagine.career.club" data-event="reimagine_open" data-event-loc="featured" target="_blank" rel="noopener noreferrer">Open Reimagine →</a>
@@ -569,7 +573,7 @@
 
     <div class="resource-grid two-col">
       <div class="resource">
-        <div class="icon icon-orange">A</div>
+        <img class="card-logo" src="https://affintus.com/wp-content/uploads/2021/06/Logo2X.png" alt="Affintus" />
         <h4>Affintus Assessment</h4>
         <p>Free assessment built for job seekers. Surfaces your natural wiring so the brand work in Reimagine builds on what is already true about you.</p>
         <a class="go" href="https://affintus.com/job-seekers/" data-event="affintus_click" target="_blank" rel="noopener noreferrer">Take the assessment</a>
@@ -625,13 +629,13 @@
     </div>
     <div class="resource-grid">
       <div class="resource">
-        <div class="icon icon-orange">M</div>
+        <img class="card-cover" src="https://m.media-amazon.com/images/I/8171anKjenL._SY220_.jpg" alt="Making Your Own Weather book cover" />
         <h4>Making Your Own Weather</h4>
         <p>The book. A complete job search system from mindset through negotiation. Eleven lessons, drawn from twenty years of coaching.</p>
         <a class="go" href="https://a.co/d/0g3XnyFv" data-event="book_buy" target="_blank" rel="noopener noreferrer">Get the book</a>
       </div>
       <div class="resource">
-        <div class="icon icon-blue">U</div>
+        <img class="card-mark" src="https://reimagine.career.club/favicon.svg" alt="Reimagine" />
         <h4>Reimagine User Guide</h4>
         <p>How to get the most out of Reimagine, step by step. Especially helpful for the go-to-market and outreach phases.</p>
         <a class="go" href="https://reimagine.career.club/reimagine-user-guide.pdf" data-event="user_guide_open" data-event-loc="deeper" target="_blank" rel="noopener noreferrer">Read the guide</a>
