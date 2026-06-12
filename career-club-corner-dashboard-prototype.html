@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Career Club Corner</title>
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
+<link rel="icon" type="image/png" href="/ccc-logo-128.png" />
+<link rel="apple-touch-icon" href="/ccc-logo-256.png" />
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +36,7 @@
   .sidebar { width: var(--sidebar-w); flex-shrink: 0; background: var(--black); color: #fff; padding: 28px 22px; position: sticky; top: 0; align-self: flex-start; height: 100vh; display: flex; flex-direction: column; }
   .sidebar .brand { display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.4px; text-transform: uppercase; color: #fff; margin-bottom: 36px; }
   .sidebar .brand .pip { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); }
+  .sidebar .brand .brand-logo, .mobilebar .brand .brand-logo { width: 28px; height: 28px; display: block; flex-shrink: 0; }
   .sidebar nav { display: flex; flex-direction: column; gap: 4px; }
   .sidebar nav a { color: #d8dde6; font-size: 15px; font-weight: 500; padding: 11px 12px; border-radius: 8px; border-left: 3px solid transparent; transition: all 0.15s ease; }
   .sidebar nav a:hover { color: var(--orange); background: rgba(255,255,255,0.04); text-decoration: none; border-left-color: var(--orange); }
@@ -264,7 +265,7 @@
 <div class="app">
 
 <aside class="sidebar">
-  <div class="brand"><span class="pip"></span>Career Club Corner</div>
+  <div class="brand"><img class="brand-logo" src="/ccc-logo-128.png" alt="Career Club Corner" />Career Club Corner</div>
   <nav id="sideNav">
     <a href="#find" class="active">Find what you need</a>
     <a href="#this-week">This Week</a>
@@ -282,7 +283,7 @@
 <div class="main">
 
 <div class="mobilebar" id="mobileBar">
-  <div class="brand"><span class="pip"></span>Career Club Corner</div>
+  <div class="brand"><img class="brand-logo" src="/ccc-logo-128.png" alt="Career Club Corner" />Career Club Corner</div>
   <button class="menu-btn" onclick="document.getElementById('mobileBar').classList.toggle('open')">Menu</button>
 </div>
 <nav class="mobile-nav">
