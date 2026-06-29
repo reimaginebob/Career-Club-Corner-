@@ -65,6 +65,12 @@
   .hero-cta { display: inline-block; background: var(--orange); color: var(--black); padding: 16px 28px; border-radius: 10px; font-weight: 700; font-size: 17px; text-decoration: none; box-shadow: 0 2px 6px rgba(250,166,26,0.30); transition: all 0.18s ease; }
   .hero-cta:hover { background: var(--orange-dark); color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(250,166,26,0.42); }
   .hero-cta-meta { display: inline-block; margin-left: 14px; color: var(--muted); font-size: 15px; font-weight: 500; }
+  .notice-banner { background: var(--orange); }
+  .notice-banner .wrap { display: flex; align-items: center; gap: 14px; padding-top: 15px; padding-bottom: 15px; }
+  .notice-banner .nb-icon { flex-shrink: 0; line-height: 0; }
+  .notice-banner .nb-text { line-height: 1.4; }
+  .notice-banner .nb-title { font-weight: 700; font-size: 16px; color: #3d2800; }
+  .notice-banner .nb-sub { font-weight: 500; font-size: 15px; color: #5a3c02; }
   .next-call { display: inline-flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px; font-size: 15px; color: var(--ink); box-shadow: 0 1px 0 rgba(0,0,0,0.04); }
   .next-call .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(250,166,26,0.22); }
   .next-call strong { color: var(--ink); font-weight: 600; }
@@ -302,11 +308,23 @@
   <a href="#deeper">Going Deeper</a>
 </nav>
 
+<div class="notice-banner" role="status">
+  <div class="wrap">
+    <span class="nb-icon" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5a3c02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><line x1="4.5" y1="4.5" x2="19.5" y2="19.5"/></svg>
+    </span>
+    <span class="nb-text">
+      <span class="nb-title">No session Monday, July 6.</span>
+      <span class="nb-sub"> We're taking the week off. Career Club Corner returns Monday, July 13 at 12:00 PM ET.</span>
+    </span>
+  </div>
+</div>
+
 <header class="hero">
   <div class="wrap">
     <h1>Job search is a team sport. <span class="accent">This is your team.</span></h1>
-    <p class="lead">Join Bob Goodwin, a LinkedIn Top Voice, and dozens of fellow job seekers as we bring order to the chaos, build community with one another, and find encouragement. Bob teaches from his book, <em>Making Your Own Weather</em>, a five-step process that will renew your job search. It's <strong>FREE</strong> and we would love to have you join this coming Monday at 12:00 ET.</p>
-    <a class="hero-cta" href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="hero" target="_blank" rel="noopener noreferrer">Register for Monday at 12pm ET →</a>
+    <p class="lead">Join Bob Goodwin, a LinkedIn Top Voice, and dozens of fellow job seekers as we bring order to the chaos, build community with one another, and find encouragement. Bob teaches from his book, <em>Making Your Own Weather</em>, a five-step process that will renew your job search. It's <strong>FREE</strong> and we would love to have you join us Monday, July 13 at 12:00 ET.</p>
+    <a class="hero-cta" href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="hero" target="_blank" rel="noopener noreferrer">Register for July 13 at 12pm ET →</a>
     <span class="hero-cta-meta">Free. Every session recorded.</span>
     <div class="host-credit">
       <img class="photo" src="/bob-headshot.png" alt="Bob Goodwin" />
