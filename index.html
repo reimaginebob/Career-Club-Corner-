@@ -8,6 +8,7 @@
 <link rel="apple-touch-icon" href="/ccc-logo-256.png" />
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -783,6 +784,14 @@
   var reg=m.querySelector('.bm-register'); if(reg) reg.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key==='Escape' && m.classList.contains('show')) close(); });
   open();
+})();
+</script>
+<script>
+(function(){
+  function toTop(){ window.scrollTo(0, 0); }
+  if (location.hash) { try { history.replaceState(null, '', location.pathname + location.search); } catch(e){} }
+  toTop();
+  window.addEventListener('load', toTop);
 })();
 </script>
 </body>
