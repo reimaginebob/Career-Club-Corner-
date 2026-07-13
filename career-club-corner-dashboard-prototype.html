@@ -66,19 +66,7 @@
   .hero-cta { display: inline-block; background: var(--orange); color: var(--black); padding: 16px 28px; border-radius: 10px; font-weight: 700; font-size: 17px; text-decoration: none; box-shadow: 0 2px 6px rgba(250,166,26,0.30); transition: all 0.18s ease; }
   .hero-cta:hover { background: var(--orange-dark); color: #fff; text-decoration: none; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(250,166,26,0.42); }
   .hero-cta-meta { display: inline-block; margin-left: 14px; color: var(--muted); font-size: 15px; font-weight: 500; }
-  .bm-overlay { position: fixed; inset: 0; background: rgba(10,10,10,0.55); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 1000; }
-  .bm-overlay.show { display: flex; }
-  .bm-card { position: relative; background: #fff; border-radius: 16px; max-width: 420px; width: 100%; padding: 34px 32px 30px; text-align: center; box-shadow: 0 18px 50px rgba(0,0,0,0.35); }
-  .bm-close { position: absolute; top: 12px; right: 14px; width: 32px; height: 32px; border: none; background: transparent; border-radius: 50%; color: var(--muted); font-size: 18px; line-height: 1; cursor: pointer; }
-  .bm-close:hover { background: var(--paper); color: var(--ink); }
-  .bm-icon { width: 64px; height: 64px; border-radius: 50%; background: #FFF3DD; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
-  .bm-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 21px; color: var(--ink); line-height: 1.3; }
-  .bm-body { font-size: 15px; color: var(--ink-soft); line-height: 1.55; margin-top: 10px; }
-  .bm-actions { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
-  .bm-register { display: block; background: var(--orange); color: #000; font-weight: 700; font-size: 15px; padding: 13px; border-radius: 10px; text-decoration: none; }
-  .bm-register:hover { background: var(--orange-dark); color: #fff; text-decoration: none; }
-  .bm-dismiss { background: transparent; border: none; color: var(--muted); font-weight: 600; font-size: 14px; padding: 6px; cursor: pointer; }
-  .bm-dismiss:hover { color: var(--ink); }
+
   .next-call { display: inline-flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 12px 20px; font-size: 15px; color: var(--ink); box-shadow: 0 1px 0 rgba(0,0,0,0.04); }
   .next-call .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px rgba(250,166,26,0.22); }
   .next-call strong { color: var(--ink); font-weight: 600; }
@@ -319,8 +307,8 @@
 <header class="hero">
   <div class="wrap">
     <h1>Job search is a team sport. <span class="accent">This is your team.</span></h1>
-    <p class="lead">Join Bob Goodwin, a LinkedIn Top Voice, and dozens of fellow job seekers as we bring order to the chaos, build community with one another, and find encouragement. Bob teaches from his book, <em>Making Your Own Weather</em>, a five-step process that will renew your job search. It's <strong>FREE</strong> and we would love to have you join us Monday, July 13 at 12:00 ET.</p>
-    <a class="hero-cta" href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="hero" target="_blank" rel="noopener noreferrer">Register for July 13 at 12pm ET →</a>
+    <p class="lead">Join Bob Goodwin, a LinkedIn Top Voice, and dozens of fellow job seekers as we bring order to the chaos, build community with one another, and find encouragement. Bob teaches from his book, <em>Making Your Own Weather</em>, a five-step process that will renew your job search. It's <strong>FREE</strong> and we would love to have you join this coming Monday at 12:00 ET.</p>
+    <a class="hero-cta" href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="hero" target="_blank" rel="noopener noreferrer">Register for Monday at 12pm ET →</a>
     <span class="hero-cta-meta">Free. Every session recorded.</span>
     <div class="host-credit">
       <img class="photo" src="/bob-headshot.png" alt="Bob Goodwin" />
@@ -756,36 +744,6 @@
     window.va('event', { name: name, location: loc });
   });
 </script>
-
-<div class="bm-overlay" id="breakModal" aria-hidden="true">
-  <div class="bm-card" role="dialog" aria-modal="true" aria-labelledby="bmTitle">
-    <button class="bm-close" type="button" aria-label="Close" data-bm-dismiss>&times;</button>
-    <div class="bm-icon" aria-hidden="true">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#b87b0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><line x1="4.5" y1="4.5" x2="19.5" y2="19.5"/></svg>
-    </div>
-    <div class="bm-title" id="bmTitle">No session this Monday, July 6</div>
-    <div class="bm-body">We're taking the week off. Career Club Corner returns <strong style="color:var(--blue);">Monday, July 13 at 12:00 PM ET</strong>. See you then.</div>
-    <div class="bm-actions">
-      <a class="bm-register" href="https://us06web.zoom.us/meeting/register/tZUqduqqqD0qG9HsxIRuL-XG4Pcx9pf7skat" data-event="register" data-event-loc="break_modal" target="_blank" rel="noopener noreferrer">Register for July 13 &rarr;</a>
-      <button class="bm-dismiss" type="button" data-bm-dismiss>Got it, close</button>
-    </div>
-  </div>
-</div>
-<script>
-(function(){
-  var KEY='ccc-break-jul6-dismissed';
-  var m=document.getElementById('breakModal');
-  if(!m) return;
-  try { if(localStorage.getItem(KEY)==='1') return; } catch(e){}
-  function open(){ m.classList.add('show'); m.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
-  function close(){ m.classList.remove('show'); m.setAttribute('aria-hidden','true'); document.body.style.overflow=''; try{ localStorage.setItem(KEY,'1'); }catch(e){} }
-  m.addEventListener('click', function(e){ if(e.target===m) close(); });
-  m.querySelectorAll('[data-bm-dismiss]').forEach(function(b){ b.addEventListener('click', close); });
-  var reg=m.querySelector('.bm-register'); if(reg) reg.addEventListener('click', close);
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && m.classList.contains('show')) close(); });
-  open();
-})();
-</script>
 <script>
 (function(){
   function toTop(){ window.scrollTo(0, 0); }
@@ -796,4 +754,3 @@
 </script>
 </body>
 </html>
-                             
