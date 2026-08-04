@@ -232,6 +232,21 @@
   .footer-brand { max-width: 400px; }
   .footer-brand p { color: #b8c0cc; }
 
+  /* Support Reimagine popup — shown once to returning visitors */
+  .support-modal-backdrop { position: fixed; inset: 0; background: rgba(10,10,10,0.55); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+  .support-modal-backdrop[hidden] { display: none; }
+  .support-modal { background: var(--card); border-radius: 16px; max-width: 440px; width: 100%; padding: 36px 32px 32px; position: relative; box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+  .support-modal-close { position: absolute; top: 14px; right: 14px; background: transparent; border: none; font-size: 22px; line-height: 1; color: var(--muted); cursor: pointer; padding: 6px 10px; border-radius: 6px; font-family: inherit; }
+  .support-modal-close:hover { color: var(--ink); background: var(--paper); }
+  .support-modal-mark { width: 32px; height: 32px; display: block; margin-bottom: 16px; }
+  .support-modal h3 { font-family: 'Montserrat', sans-serif; font-size: 21px; font-weight: 700; color: var(--blue); margin: 0 0 12px; letter-spacing: -0.2px; }
+  .support-modal p { font-size: 15px; color: var(--ink-soft); line-height: 1.55; margin: 0 0 26px; }
+  .support-modal-actions { display: flex; gap: 10px 18px; flex-wrap: wrap; align-items: center; }
+  .support-modal-actions .sm-primary { display: inline-block; background: var(--orange); color: var(--black); padding: 12px 20px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
+  .support-modal-actions .sm-primary:hover { background: var(--orange-dark); color: #fff; text-decoration: none; }
+  .support-modal-actions .sm-dismiss { background: transparent; border: none; color: var(--muted); font-size: 15px; font-weight: 600; cursor: pointer; padding: 12px 4px; font-family: inherit; }
+  .support-modal-actions .sm-dismiss:hover { color: var(--ink); text-decoration: underline; }
+
   /* Tablet — narrower than 1180 drops past-weeks to 2 columns */
   @media (max-width: 1180px) {
     .past-weeks { grid-template-columns: repeat(2, 1fr); }
@@ -266,10 +281,24 @@
     .featured-tool { grid-template-columns: 1fr; padding: 30px; gap: 28px; }
     .featured-tool h3 { font-size: 30px; }
     .resource-grid.two-col { grid-template-columns: 1fr; }
+    .support-modal { padding: 28px 22px 24px; }
   }
 </style>
 </head>
 <body>
+
+<div class="support-modal-backdrop" id="supportModalBackdrop" hidden>
+  <div class="support-modal" role="dialog" aria-modal="true" aria-labelledby="supportModalTitle">
+    <button class="support-modal-close" id="supportModalClose" aria-label="Close">&times;</button>
+    <img class="support-modal-mark" src="https://reimagine.career.club/favicon.svg" alt="" />
+    <h3 id="supportModalTitle">Reimagine now takes optional support</h3>
+    <p>Reimagine stays completely free to use, that hasn't changed. If you'd like to help cover what it costs to run, there's a new Support Reimagine option in the app's sidebar: a one-time gift or a small monthly amount, entirely up to you.</p>
+    <div class="support-modal-actions">
+      <a class="sm-primary" id="supportModalOpen" href="https://reimagine.career.club" data-event="support_reimagine_open" data-event-loc="popup" target="_blank" rel="noopener noreferrer">Open Reimagine →</a>
+      <button class="sm-dismiss" id="supportModalDismiss" data-event="support_reimagine_dismiss" data-event-loc="popup">Maybe later</button>
+    </div>
+  </div>
+</div>
 
 <div class="app">
 
@@ -772,6 +801,45 @@
   if (location.hash) { try { history.replaceState(null, '', location.pathname + location.search); } catch(e){} }
   toTop();
   window.addEventListener('load', toTop);
+})();
+</script>
+<script>
+(function(){
+  // Support Reimagine popup: shown once, only to visitors who have been here before.
+  var VISIT_KEY = 'ccc_visited';
+  var SEEN_KEY = 'ccc_support_reimagine_seen';
+  var backdrop = document.getElementById('supportModalBackdrop');
+  if (!backdrop) return;
+
+  function closeModal(){
+    backdrop.hidden = true;
+    document.body.style.overflow = '';
+    try { localStorage.setItem(SEEN_KEY, '1'); } catch(e){}
+  }
+
+  try {
+    var hasVisitedBefore = localStorage.getItem(VISIT_KEY);
+    var hasSeenPopup = localStorage.getItem(SEEN_KEY);
+    localStorage.setItem(VISIT_KEY, '1');
+    if (hasVisitedBefore && !hasSeenPopup) {
+      setTimeout(function(){
+        backdrop.hidden = false;
+        document.body.style.overflow = 'hidden';
+        if (window.va) window.va('event', { name: 'support_reimagine_shown', location: 'popup' });
+      }, 1200);
+    }
+  } catch (e) {
+    // localStorage unavailable (private browsing, etc.) — skip the popup entirely
+  }
+
+  var closeBtn = document.getElementById('supportModalClose');
+  var dismissBtn = document.getElementById('supportModalDismiss');
+  var openLink = document.getElementById('supportModalOpen');
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
+  if (openLink) openLink.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !backdrop.hidden) closeModal(); });
 })();
 </script>
 </body>
