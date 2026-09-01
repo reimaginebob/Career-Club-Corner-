@@ -287,15 +287,14 @@
 </head>
 <body>
 
-<div class="support-modal-backdrop" id="supportModalBackdrop" hidden>
-  <div class="support-modal" role="dialog" aria-modal="true" aria-labelledby="supportModalTitle">
-    <button class="support-modal-close" id="supportModalClose" aria-label="Close">&times;</button>
-    <img class="support-modal-mark" src="https://reimagine.career.club/favicon.svg" alt="" />
-    <h3 id="supportModalTitle">Reimagine now takes optional support</h3>
-    <p>Reimagine stays completely free to use, that hasn't changed. If you'd like to help cover what it costs to run, there's a new Support Reimagine option in the app's sidebar: a one-time gift or a small monthly amount, entirely up to you.</p>
+<div class="support-modal-backdrop" id="noticeModalBackdrop" hidden>
+  <div class="support-modal" role="dialog" aria-modal="true" aria-labelledby="noticeModalTitle">
+    <button class="support-modal-close" id="noticeModalClose" aria-label="Close">&times;</button>
+    <img class="support-modal-mark" src="/ccc-logo-128.png" alt="" />
+    <h3 id="noticeModalTitle">No Career Club Corner this Monday</h3>
+    <p>We're taking Labor Day, September 7, off. See you back on the call Monday, September 14 at 12:00 ET.</p>
     <div class="support-modal-actions">
-      <a class="sm-primary" id="supportModalOpen" href="https://reimagine.career.club" data-event="support_reimagine_open" data-event-loc="popup" target="_blank" rel="noopener noreferrer">Open Reimagine →</a>
-      <button class="sm-dismiss" id="supportModalDismiss" data-event="support_reimagine_dismiss" data-event-loc="popup">Maybe later</button>
+      <a class="sm-primary" id="noticeModalDismiss" href="#" data-event="labor_day_notice_dismiss" data-event-loc="popup">Got it, thanks</a>
     </div>
   </div>
 </div>
@@ -860,10 +859,11 @@
 </script>
 <script>
 (function(){
-  // Support Reimagine popup: shown once, only to visitors who have been here before.
-  var VISIT_KEY = 'ccc_visited';
-  var SEEN_KEY = 'ccc_support_reimagine_seen';
-  var backdrop = document.getElementById('supportModalBackdrop');
+  // Labor Day closure notice: shown once to every visitor, through Sept 14, 2026.
+  // Restore the Support Reimagine popup (see git history) once this run has served its purpose.
+  var SEEN_KEY = 'ccc_labor_day_notice_seen';
+  var CUTOFF = new Date('2026-09-14T00:00:00');
+  var backdrop = document.getElementById('noticeModalBackdrop');
   if (!backdrop) return;
 
   function closeModal(){
@@ -873,26 +873,22 @@
   }
 
   try {
-    var hasVisitedBefore = localStorage.getItem(VISIT_KEY);
     var hasSeenPopup = localStorage.getItem(SEEN_KEY);
-    localStorage.setItem(VISIT_KEY, '1');
-    if (hasVisitedBefore && !hasSeenPopup) {
+    if (!hasSeenPopup && new Date() < CUTOFF) {
       setTimeout(function(){
         backdrop.hidden = false;
         document.body.style.overflow = 'hidden';
-        if (window.va) window.va('event', { name: 'support_reimagine_shown', location: 'popup' });
-      }, 1200);
+        if (window.va) window.va('event', { name: 'labor_day_notice_shown', location: 'popup' });
+      }, 1000);
     }
   } catch (e) {
     // localStorage unavailable (private browsing, etc.) — skip the popup entirely
   }
 
-  var closeBtn = document.getElementById('supportModalClose');
-  var dismissBtn = document.getElementById('supportModalDismiss');
-  var openLink = document.getElementById('supportModalOpen');
+  var closeBtn = document.getElementById('noticeModalClose');
+  var dismissBtn = document.getElementById('noticeModalDismiss');
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (dismissBtn) dismissBtn.addEventListener('click', closeModal);
-  if (openLink) openLink.addEventListener('click', closeModal);
+  if (dismissBtn) dismissBtn.addEventListener('click', function(e){ e.preventDefault(); closeModal(); });
   backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeModal(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !backdrop.hidden) closeModal(); });
 })();
