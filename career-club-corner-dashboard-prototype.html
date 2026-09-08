@@ -287,18 +287,6 @@
 </head>
 <body>
 
-<div class="support-modal-backdrop" id="noticeModalBackdrop" hidden>
-  <div class="support-modal" role="dialog" aria-modal="true" aria-labelledby="noticeModalTitle">
-    <button class="support-modal-close" id="noticeModalClose" aria-label="Close">&times;</button>
-    <img class="support-modal-mark" src="/ccc-logo-128.png" alt="" />
-    <h3 id="noticeModalTitle">No Career Club Corner this Monday</h3>
-    <p>We're taking Labor Day, September 7, off. See you back on the call Monday, September 14 at 12:00 ET.</p>
-    <div class="support-modal-actions">
-      <a class="sm-primary" id="noticeModalDismiss" href="#" data-event="labor_day_notice_dismiss" data-event-loc="popup">Got it, thanks</a>
-    </div>
-  </div>
-</div>
-
 <div class="app">
 
 <aside class="sidebar">
@@ -855,42 +843,6 @@
   if (location.hash) { try { history.replaceState(null, '', location.pathname + location.search); } catch(e){} }
   toTop();
   window.addEventListener('load', toTop);
-})();
-</script>
-<script>
-(function(){
-  // Labor Day closure notice: shown once to every visitor, through Sept 14, 2026.
-  // Restore the Support Reimagine popup (see git history) once this run has served its purpose.
-  var SEEN_KEY = 'ccc_labor_day_notice_seen';
-  var CUTOFF = new Date('2026-09-14T00:00:00');
-  var backdrop = document.getElementById('noticeModalBackdrop');
-  if (!backdrop) return;
-
-  function closeModal(){
-    backdrop.hidden = true;
-    document.body.style.overflow = '';
-    try { localStorage.setItem(SEEN_KEY, '1'); } catch(e){}
-  }
-
-  try {
-    var hasSeenPopup = localStorage.getItem(SEEN_KEY);
-    if (!hasSeenPopup && new Date() < CUTOFF) {
-      setTimeout(function(){
-        backdrop.hidden = false;
-        document.body.style.overflow = 'hidden';
-        if (window.va) window.va('event', { name: 'labor_day_notice_shown', location: 'popup' });
-      }, 1000);
-    }
-  } catch (e) {
-    // localStorage unavailable (private browsing, etc.) — skip the popup entirely
-  }
-
-  var closeBtn = document.getElementById('noticeModalClose');
-  var dismissBtn = document.getElementById('noticeModalDismiss');
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (dismissBtn) dismissBtn.addEventListener('click', function(e){ e.preventDefault(); closeModal(); });
-  backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeModal(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !backdrop.hidden) closeModal(); });
 })();
 </script>
 </body>
