@@ -222,6 +222,18 @@
   .arc-next-label { font-size: 15px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 1.2px; }
   .arc-next-title { font-size: 16px; color: var(--ink); }
 
+  /* Making Your Own Weather ribbon — collapsed archive of the original 13-week series */
+  .myow-ribbon { margin-top: 20px; }
+  .myow-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 24px; cursor: pointer; font-family: inherit; text-align: left; transition: all 0.15s ease; }
+  .myow-toggle:hover { border-color: var(--orange); background: #fff; }
+  .myow-toggle-text { display: flex; flex-direction: column; gap: 4px; }
+  .myow-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 18px; color: var(--blue); }
+  .myow-sub { font-size: 14px; color: var(--muted); }
+  .myow-chev { flex-shrink: 0; font-size: 18px; color: var(--orange-dark); transition: transform 0.15s ease; }
+  .myow-toggle.open .myow-chev { transform: rotate(180deg); }
+  .myow-panel { display: none; margin-top: 14px; }
+  .myow-panel.show { display: block; }
+
   /* Footer */
   footer { background: var(--black); color: #d8dde6; padding: 48px 0; margin-top: 48px; }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
@@ -278,6 +290,7 @@
     .arc-item > .arc-weeks { grid-column: 2; grid-row: 1; }
     .arc-item > .arc-title { grid-column: 2; grid-row: 2; }
     .arc-item > .arc-now { display: none; }
+    .myow-toggle { flex-direction: column; align-items: flex-start; gap: 10px; }
     .featured-tool { grid-template-columns: 1fr; padding: 30px; gap: 28px; }
     .featured-tool h3 { font-size: 30px; }
     .resource-grid.two-col { grid-template-columns: 1fr; }
@@ -347,6 +360,11 @@
         </div>
       </div>
       <div class="helper-grid">
+        <a class="help-card" href="#myow" data-event="quick_help" data-event-loc="myow">
+          <span class="need">Explore the Making Your Own Weather curriculum</span>
+          <span class="dest">Bob's original 13-week series: attitude, personal brand, outreach, interviewing, and negotiating, with every recording and deck.</span>
+          <span class="arrow">Go to Making Your Own Weather →</span>
+        </a>
         <a class="help-card" href="#this-week" data-event="quick_help" data-event-loc="this_week">
           <span class="need">Get this week's deck and recording</span>
           <span class="dest">Latest session materials, Zoom recording, and passcode.</span>
@@ -372,11 +390,6 @@
           <span class="dest">The Zoom registration link, shareable in one click.</span>
           <span class="arrow">Go to Connect →</span>
         </a>
-        <a class="help-card" href="https://buy.stripe.com/4gw01X6SZcHq3u07sw" data-event="consultation_book" data-event-loc="quick_help" target="_blank" rel="noopener noreferrer">
-          <span class="need">Book 1:1 time with Bob</span>
-          <span class="dest">Paid consultation, scheduled directly through Stripe.</span>
-          <span class="arrow">Book a session →</span>
-        </a>
       </div>
     </div>
   </div>
@@ -392,37 +405,37 @@
     </div>
     <div class="week-panel">
       <div>
-        <span class="week-tag">Week 14 of 22 · September 21, 2026</span>
-        <h3>My Coach</h3>
-        <p class="week-meta">Last week you learned how to negotiate an offer as a full package, not just a base number. This week starts something new: a 9-week series that goes hands-on with Reimagine itself, opening with My Coach, the guide built into the platform that already knows your background, your values, and where you're headed.</p>
+        <span class="week-tag">Week 2 of 9 · September 28, 2026</span>
+        <h3>Reimagine Training: Messaging, Personal Brand &amp; Bridge Story</h3>
+        <p class="week-meta">Week 2 of Reimagine Training is all about messaging: the personal brand Reimagine builds from your orientation, and how to shape it into something you can say out loud with confidence.</p>
         <div class="takeaways">
           <strong>Highlights from the conversation:</strong>
           <ul>
-            <li><strong>My Coach is live inside Reimagine, and it works like a running conversation, not a form.</strong> It's built to encourage, advise, and guide, drawing on the background, values, and goals you already laid out in orientation. Talk to it, type to it, or upload a document, and it responds with your specific situation in mind.</li>
-            <li><strong>Your personal brand work can happen by voice now.</strong> Speak your thoughts into Reimagine and My Coach cleans up and synthesizes what you said, so building your brand statement feels closer to talking it through with someone than filling out a form.</li>
-            <li><strong>Reimagine holds one core resume in three formats: human, traditional, and ATS.</strong> Send the ATS version through an online application, since it leans on keyword-heavy core competencies instead of narrative accomplishments. Bring the traditional version, with its strategic bolding and career highlights, straight into the interview room.</li>
-            <li><strong>A formatting flag worth passing along: horizontal lines in a resume can trip up certain ATS readers.</strong> That's getting checked against real ATS behavior now, with an update to the template if it turns out to matter.</li>
-            <li><strong>Your Reimagine pipeline keeps a record even after you remove something.</strong> Archived items sit for 90 days before they're gone for good, so a role that resurfaces later is still there to bring back.</li>
-            <li><strong>Reimagine runs as a closed system, so company names under an NDA are safe to enter.</strong> That includes anything you tell My Coach directly: your background, your target list, even a rough first draft of your story.</li>
-            <li><strong>Third-party assessments like Affintus feed straight into your personal brand.</strong> They surface how you naturally operate and think, giving My Coach a clearer starting point than guesswork, especially once you layer in your own priorities, reputation, and the life events that shaped where you're headed.</li>
+            <li><strong>Your personal brand in Reimagine is built on evidence.</strong> It pulls together what you've accomplished in your career, how you're wired from assessments like Affintus, and what others say about you. The more of that you put into orientation, the more your brand sounds like you and the easier it is to believe.</li>
+            <li><strong>Talk it through with the microphone button.</strong> Several of you found it easier to say your story out loud than to type it. Reimagine pulls out the key points and synthesizes them, so you can think out loud and still end up with something usable.</li>
+            <li><strong>Push back when the draft doesn't sound like a person.</strong> Reimagine gives you a strong first pass, and the final wording is yours. If a line reads like a resume or overstates something, change it or ask My Coach to rework it.</li>
+            <li><strong>Specific beats general.</strong> Name the kind of company where you do your best work and the problem you solve there. A clear stand makes you easier to remember and easier to refer than trying to fit every opening.</li>
+            <li><strong>Boil your brand down to three themes before an interview.</strong> A long, detailed story can make you sound too broad. Three core themes keep you focused and steady when the conversation gets tense.</li>
+            <li><strong>Different career threads each get their own space.</strong> You can upload more than one version of your resume, like an academic CV and a corporate one. Use Add an Opportunity for a specific job you're chasing, and Focus Playbooks when you want to explore a broader direction like Familiar Ground, Industry Insider, or Work That Matters.</li>
+            <li><strong>When the search feels stuck, sharpen the message before adding volume.</strong> Put your energy into direct outreach to companies on your list and thoughtful comments on posts in your field. Reimagine can build the company list and draft the outreach so you're not starting from scratch.</li>
           </ul>
         </div>
         <div class="takeaways" style="margin-top:24px;">
           <strong>Your work this week:</strong>
           <ul>
-            <li><strong>Try My Coach with your voice or a document upload.</strong> Use the microphone or drop in a file and notice how differently your brand statement comes out when you talk it through instead of typing it.</li>
-            <li><strong>Pull up your three resume versions in Reimagine and compare them side by side.</strong> Know which one goes into the application and which one you bring with you into the room.</li>
-            <li><strong>Take the Affintus assessment if you haven't yet, then feed it into Reimagine.</strong> It gives My Coach real material to build from instead of a blank slate.</li>
-            <li><strong>Clean out anything stale in your pipeline.</strong> Nothing is gone for 90 days, so removing it now doesn't close the door if the opportunity comes back around.</li>
-            <li><strong>Tell Bob if My Coach says something that doesn't sound right, or if your priorities have shifted since you first set up Reimagine.</strong> Feedback sharpens the tool, and a fresh start through orientation is one click away if you need it.</li>
+            <li><strong>Finish orientation in Reimagine.</strong> Upload your resume and LinkedIn profile, add your assessments, values, and priorities, and include reputation evidence like recommendations or reviews.</li>
+            <li><strong>Review your personal brand and make it sound like you.</strong> Use the microphone to talk through any section, then edit anything that reads like a resume instead of a person.</li>
+            <li><strong>Write down your three themes.</strong> Keep them handy for your next networking conversation or interview.</li>
+            <li><strong>Use My Coach when you get stuck.</strong> Upload a screenshot or file and ask about that exact screen or document. It can also help with job search questions or just a rough week.</li>
+            <li><strong>Share feedback and pass it on.</strong> If something breaks or doesn't make sense, email Bob at bob@career.club. If Reimagine is helping you, point someone else in a search toward it.</li>
           </ul>
         </div>
       </div>
       <div class="week-actions">
         <h4>Get the materials</h4>
-        <a class="btn btn-primary" href="https://us06web.zoom.us/rec/share/t-kXa-ZQJEVv0i2qOAmf57_K64QElQlBTMh0V_CDO1HC5c7pixdDfPWHQxpxvuv2.qZ59KByiSWbwRtJ-" data-event="recording_play" target="_blank" rel="noopener noreferrer">Watch the recording</a>
-        <div class="passcode"><span>Passcode</span><code>Ap=2yiP6</code></div>
-        <a class="btn btn-secondary" href="https://drive.google.com/file/d/1sCALTtZGu2CJovHSd89lF7VXdgm4OysN/view?usp=drivesdk" style="margin-top:12px;" data-event="deck_open" target="_blank" rel="noopener noreferrer">Open the deck</a>
+        <a class="btn btn-primary" href="https://us06web.zoom.us/rec/share/9eG5V_qS3Imc-anKAMh5fFlaCrEnjPTQcWSTbKRm14GutfsJ-hkAMLtulbpHTJo1.UNl-BkeaaEIRwuF-" data-event="recording_play" target="_blank" rel="noopener noreferrer">Watch the recording</a>
+        <div class="passcode"><span>Passcode</span><code>JS.b2@Tr</code></div>
+        <a class="btn btn-secondary" href="https://drive.google.com/file/d/1mWnCnciRTxxY4NjNklZmNp4KlMgdU-Mu/view?usp=drivesdk" style="margin-top:12px;" data-event="deck_open" target="_blank" rel="noopener noreferrer">Open the deck</a>
       </div>
     </div>
   </div>
@@ -433,15 +446,90 @@
     <div class="section-head">
       <div class="head-left">
         <span class="eyebrow">Curriculum</span>
-        <h2>Where we are in the curriculum</h2>
+        <h2>Where we are in Reimagine Training</h2>
       </div>
     </div>
     <div class="arc-panel">
       <div class="arc-status">
-        <span class="arc-pos">Week 14 of 22</span>
-        <span class="arc-topic">My Coach</span>
+        <span class="arc-pos">Week 2 of 9</span>
+        <span class="arc-topic">Messaging: Personal Brand &amp; Bridge Story</span>
       </div>
       <div class="arc-bar">
+        <div class="arc-seg done" title="Week 1"></div>
+        <div class="arc-seg current" title="Week 2"></div>
+        <div class="arc-seg" title="Week 3"></div>
+        <div class="arc-seg" title="Week 4"></div>
+        <div class="arc-seg" title="Week 5"></div>
+        <div class="arc-seg" title="Week 6"></div>
+        <div class="arc-seg" title="Week 7"></div>
+        <div class="arc-seg" title="Week 8"></div>
+        <div class="arc-seg" title="Week 9"></div>
+      </div>
+      <div class="arc-list">
+        <div class="arc-item done">
+          <span class="arc-mark">●</span>
+          <span class="arc-weeks">Week 1</span>
+          <span class="arc-title">Session 1 &middot; My Coach</span>
+        </div>
+        <div class="arc-item current">
+          <span class="arc-mark">●</span>
+          <span class="arc-weeks">Week 2</span>
+          <span class="arc-title">Session 2 &middot; Messaging: Personal Brand &amp; Bridge Story</span>
+          <span class="arc-now">We are here</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 3</span>
+          <span class="arc-title">Session 3 &middot; Adding an Opportunity: About This Company &amp; Your Cover Letter</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 4</span>
+          <span class="arc-title">Session 4 &middot; Stay Ready: Managing a Live Opportunity</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 5</span>
+          <span class="arc-title">Session 5 &middot; My Pipeline</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 6</span>
+          <span class="arc-title">Session 6 &middot; Focus Playbooks: Go-to-Market &amp; Choosing Your Direction</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 7</span>
+          <span class="arc-title">Session 7 &middot; Focus Playbooks: Your Industry Ecosystem</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 8</span>
+          <span class="arc-title">Session 8 &middot; Growing Your Network</span>
+        </div>
+        <div class="arc-item upcoming">
+          <span class="arc-mark">○</span>
+          <span class="arc-weeks">Week 9</span>
+          <span class="arc-title">Session 9 &middot; Offer &amp; Negotiation</span>
+        </div>
+      </div>
+      <div class="arc-next">
+        <span class="arc-next-label">Next Monday</span>
+        <span class="arc-next-title">Reimagine Training continues with Session 3: Adding an Opportunity, About This Company and Your Cover Letter</span>
+      </div>
+    </div>
+
+    <div class="myow-ribbon" id="myow">
+      <button type="button" class="myow-toggle" data-myow-toggle aria-expanded="false" aria-controls="myow-panel">
+        <span class="myow-toggle-text">
+          <span class="myow-label">Making Your Own Weather</span>
+          <span class="myow-sub">The original 13-week series: attitude, personal brand, outreach, interviewing, and negotiating, with every recording and deck.</span>
+        </span>
+        <span class="myow-chev">▾</span>
+      </button>
+      <div class="myow-panel" id="myow-panel">
+        <div class="arc-panel">
+          <div class="arc-bar">
         <div class="arc-seg done" title="Week 1"></div>
         <div class="arc-seg done" title="Week 2"></div>
         <div class="arc-seg done" title="Week 3"></div>
@@ -455,17 +543,8 @@
         <div class="arc-seg done" title="Week 11"></div>
         <div class="arc-seg done" title="Week 12"></div>
         <div class="arc-seg done" title="Week 13"></div>
-        <div class="arc-seg current" title="Week 14"></div>
-        <div class="arc-seg" title="Week 15"></div>
-        <div class="arc-seg" title="Week 16"></div>
-        <div class="arc-seg" title="Week 17"></div>
-        <div class="arc-seg" title="Week 18"></div>
-        <div class="arc-seg" title="Week 19"></div>
-        <div class="arc-seg" title="Week 20"></div>
-        <div class="arc-seg" title="Week 21"></div>
-        <div class="arc-seg" title="Week 22"></div>
-      </div>
-      <div class="arc-list">
+          </div>
+          <div class="arc-list">
         <div class="arc-phase"><span class="arc-phase-num">1</span><span class="arc-phase-name">Attitude</span></div>
         <div class="arc-item done arc-clickable" data-recap="recap-wk1">
           <span class="arc-mark">●</span>
@@ -683,58 +762,8 @@
             </div>
           </div>
         </div>
-
-        <div class="arc-phase arc-phase-cap"><span class="arc-phase-num">★</span><span class="arc-phase-name">Reimagine Training</span></div>
-        <div class="arc-item current">
-          <span class="arc-mark">●</span>
-          <span class="arc-weeks">Week 14</span>
-          <span class="arc-title">Session 1 &middot; My Coach</span>
-          <span class="arc-now">We are here</span>
+          </div>
         </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 15</span>
-          <span class="arc-title">Session 2 &middot; topic to be announced</span>
-        </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 16</span>
-          <span class="arc-title">Session 3 &middot; topic to be announced</span>
-        </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 17</span>
-          <span class="arc-title">Session 4 &middot; topic to be announced</span>
-        </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 18</span>
-          <span class="arc-title">Session 5 &middot; topic to be announced</span>
-        </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 19</span>
-          <span class="arc-title">Session 6 &middot; topic to be announced</span>
-        </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 20</span>
-          <span class="arc-title">Session 7 &middot; topic to be announced</span>
-        </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 21</span>
-          <span class="arc-title">Session 8 &middot; topic to be announced</span>
-        </div>
-        <div class="arc-item upcoming">
-          <span class="arc-mark">○</span>
-          <span class="arc-weeks">Week 22</span>
-          <span class="arc-title">Session 9 &middot; topic to be announced</span>
-        </div>
-      </div>
-      <div class="arc-next">
-        <span class="arc-next-label">Next Monday</span>
-        <span class="arc-next-title">Week 15: Reimagine Training continues with Session 2, another hands-on look at a specific piece of the platform</span>
       </div>
     </div>
   </div>
@@ -889,6 +918,17 @@
       if (!card) return;
       var open = card.classList.toggle('show');
       row.classList.toggle('open', open);
+    });
+  });
+
+  // Making Your Own Weather ribbon: expand/collapse the archived 13-week series
+  document.querySelectorAll('[data-myow-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!panel) return;
+      var open = panel.classList.toggle('show');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   });
 
